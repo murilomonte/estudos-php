@@ -36,3 +36,21 @@ para mudar para o brasileiro, usa-se a função:
 ```php
 date_default_timezone_set("America/Sao_Paulo");
 ```
+ ## Variáveis e constantes
+ No PHP, para criar uma variável, utiliza-se um cifrão como declaração. Ex:
+ ```php
+ $nome = "Murilo";
+ ```
+Para criar uma constante, utiliza-se a declaração ``const``, assim como no javascritp. Ex:
+```php
+const PAIS = "Brasil"
+```
+
+Observações: 
+* **Variáveis** sempre terão um **cifrão ($)** no inicio;
+* Para **variáveis**, dê preferência a letras **minúsculas**; 
+* Para **constantes**, dê preferência a letras **maiúsculas**; 
+* Use **SNAKE_CASE** para nomear **constantes**
+* Use **camelCase** para **métodos** e **atributos**; 
+
+
