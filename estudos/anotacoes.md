@@ -30,8 +30,7 @@ Para desenvolver em php é preciso de um servidor onde tenha:
         s =  segundo
     */
     ```
-Por padrão o php usa o fuso-horário CET
-para mudar para o brasileiro, usa-se a função:
+Por padrão o php usa o fuso-horário CET. Para mudar para o brasileiro, usa-se a função:
 
 ```php
 date_default_timezone_set("America/Sao_Paulo");
@@ -41,7 +40,7 @@ date_default_timezone_set("America/Sao_Paulo");
  ```php
  $nome = "Murilo";
  ```
-Para criar uma constante, utiliza-se a declaração ``const``, assim como no javascritp. Ex:
+Para criar uma constante, utiliza-se a declaração ``const``, assim como no javascript. Ex:
 ```php
 const PAIS = "Brasil"
 ```
@@ -83,7 +82,7 @@ var_dump($valor); //--> int(300)
 ```
 
 ### Declarando o tipo de uma variável
-No PHP não há uma forte tipagem, mas isso é possivel declarando tipo entre aspas antes do valor. Ex:
+No PHP não há uma forte tipagem, mas isso é possível declarando tipo entre aspas antes do valor. Ex:
 
 ```php
 // o valor que seria considerado como string agora é lido como inteiro.
@@ -92,7 +91,7 @@ var_dump($num); //--> int(950)
 ```
 
 Observações:
-* Representações númericas: \
+* Representações numéricas: \
     0x = hexadecimal \
     0b = binário \
     0 = octal
@@ -100,3 +99,5 @@ Observações:
 * Sempre que usar potência o número será considerado como float.
 
 * Para um **echo** (ou **print**) o valor **boolean** **true** é mostrado como **1**, já o valor **false** é mostrado como **nada**.
+
+## Manipulação de strings
