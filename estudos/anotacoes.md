@@ -101,3 +101,48 @@ Observações:
 * Para um **echo** (ou **print**) o valor **boolean** **true** é mostrado como **1**, já o valor **false** é mostrado como **nada**.
 
 ## Manipulação de strings
+
+As strings podem ser dividida em 4 formatos. Sendo eles:
+
+* **Double quoted** \
+    É um tipo de string que utiliza aspas duplas. \
+    Nela, o php também **interpreta o conteúdo**. Ex:
+    ```php
+    echo "PHP \u{1F418}" //--> PHP 🐘
+    ```
+    Também é possível concatenar a string com outra utilizando um ponto. Ex:
+    ```php
+    echo "string " . "legal"; //--> string legal
+    ```
+
+* **Single Quoted** \
+    É o tipo de string que utiliza aspas simples. Possui a mesma propiedade das strings com aspas duplas, porém **não interpreta o conteúdo**.
+
+* **Heredoc** ( **Nem o criador sabe que existe** )\
+    É uma string de várias linhas que aceita **pré formatação**. Ex:
+    ```php
+    echo <<< IDENTIFICADOR
+        String
+            Com 
+                Pré
+                    Formatação.
+    IDENTIFICADOR;
+    ```
+* **Nowdoc** 
+    Tem a mesma sintáxe do formato ``heredoc``, porém não **interpreta o conteúdo**.
+
+### Sequências de escape
+(*Revisar depois) Servem como uma forma de **formatar** strings. Ex:
+
+* \n ( Nova linha );
+* \t ( Sinal de tabulação (tecla tab) );
+* \\\ ( Barra invertida );
+* \$ ( Cifrão );
+* \u{} ( Emojis )
+
+
+observações:
+* Não é possível utilizar aspas duplas dentro de aspas duplas e virce-versa. Para isso, utilizamos a seguinte sintáxe:
+    ```php
+    echo "Nome \"Apelido\" Sobrenome"; //--> Nome "Apelido" Sobrenome
+    ```
