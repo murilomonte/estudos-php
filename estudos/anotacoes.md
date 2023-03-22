@@ -2,6 +2,9 @@
 
 Essas são minhas anotações sobre o meu estudo sobre PHP que está ocorrendo principalmente através do Curso em Video.
 
+## Disclaimer
+Anoto as coisas do jeito que entendo. Caso tenha algo errado, por favor, abra uma issue informando o problema. Irei agradecer muito :)
+
 ## O que é preciso para desenvolver em PHP?
 Para desenvolver em php é preciso de um servidor onde tenha:
 * Apache (ou outro) \
@@ -45,7 +48,7 @@ Para criar uma constante, utiliza-se a declaração ``const``, assim como no jav
 const PAIS = "Brasil"
 ```
 
-Observações: 
+### Observações: 
 * **Variáveis** sempre terão um **cifrão ($)** no inicio;
 * Para **variáveis**, dê preferência a letras **minúsculas**; 
 * Para **constantes**, dê preferência a letras **maiúsculas**; 
@@ -90,7 +93,7 @@ $num = (int) "950";
 var_dump($num); //--> int(950)
 ```
 
-Observações:
+### Observações:
 * Representações numéricas: \
     0x = hexadecimal \
     0b = binário \
@@ -141,8 +144,47 @@ As strings podem ser dividida em 4 formatos. Sendo eles:
 * \u{} ( Emojis )
 
 
-observações:
+### observações:
 * Não é possível utilizar aspas duplas dentro de aspas duplas e virce-versa. Para isso, utilizamos a seguinte sintáxe:
     ```php
     echo "Nome \"Apelido\" Sobrenome"; //--> Nome "Apelido" Sobrenome
     ```
+
+## Formulários com PHP
+É possível integrar dados de formulários no PHP, para isso temos de passar os dados através do método ``GET`` ou ``POST`` na tag ``</form>`` no HTML. \
+Ex:
+
+```html
+<!-- HTML -->
+<form action="index.php" method="get">
+    <!-- Sendo o atributo 'name' o que o php irá utilizar -->
+    <input type="text" name="nome" id="idnome">
+    [...]
+</form>
+```
+Já no PHP, realizamos a integração da seguinte forma:
+
+```php
+<?php
+    // Ao executar var_dump($_REQUEST) vemos que se trata de uma array por onde os dados são transmitidos. Ex: array(1) { ["nome"]=> string(6) "Murilo"}.
+
+    $nome = $_REQUEST["nome"]; // É utilizado o mesmo nome do atributo 'name' usado no input html para indicar o dado.
+
+    echo $nome; //--> Nome fornecido através do input.
+?>
+```
+Podemos utilizar outras super globais para conseguir os dados, como por exemplo:
+
+* $_POST
+* $_GET
+* $_REQUEST\
+    Essa sendo a junção dos métodos: ``$_GET``, ``$_POST`` e ``$_COOKIES``.
+
+### Observações:
+Caso não seja transmitido nenhum dado através do formulário, será mostrado um erro de sintáxe. \
+Para resolver, podemos utilizar os operadores de **coalescencia nula**, adicionados no php 8. Ex:
+
+```php
+// caso não seja transmitido nenhum dado através de 'name', será usado a string "sem nome no lugar".
+$nome = $_REQUEST["nome"] ?? "sem nome";
+```
