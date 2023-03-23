@@ -6,6 +6,24 @@ Essas são minhas anotações sobre o meu estudo sobre PHP que está ocorrendo p
 Anoto as coisas do jeito que entendo. Caso tenha algo errado, por favor, abra uma issue informando o problema. Irei agradecer muito :)
 
 ## Sumário
+
+* [O que é preciso para desenvolver em PHP?](#o-que-é-preciso-para-desenvolver-em-php)
+* [Tempo com php](#tempo-com-php)
+* [Variáveis e constantes](#variáveis-e-constantes)
+    * [Observações](#observações)
+* [Tipos primitivos](#tipos-primitivos)
+    * [Como testar o tipo primitivo](#como-testar-o-tipo-primitivo)
+    * [Declarando o tipo de uma variável](#declarando-o-tipo-de-uma-variável)
+    * [Observações](#observac3a7c3b5es-1)
+* [Manipulação de strings](#manipulação-de-strings)
+    * [Tipos de string](#tipos-de-strings)
+    * [Sequências de escape](#sequências-de-escape)
+    * [Observações](#observac3a7c3b5es-2)
+* [Formulários com PHP](#formulários-com-php)
+    * [Observações](#observac3a7c3b5es-3)
+* [Funções aritméticas](#funções-aritméticas)
+    * [Observações](#observac3a7c3b5es-4)
+
 **(ToDo)**
 
 ## O que é preciso para desenvolver em PHP?
@@ -110,6 +128,8 @@ var_dump($num); //--> int(950)
 
 As strings podem ser dividida em 4 formatos. Sendo eles:
 
+### Tipos de strings
+
 * **Double quoted** \
     É um tipo de string que utiliza aspas duplas. \
     Nela, o php também **interpreta o conteúdo**. Ex:
@@ -193,6 +213,7 @@ $nome = $_REQUEST["nome"] ?? "sem nome";
 ```
 ## Funções aritméticas
 No PHP temos várias funções aritméticas. Temos como exemplo:
+
 * **abs()** \
     que retorna o valor absoluto de um número.
 * **base_convert()** \
