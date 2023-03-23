@@ -30,8 +30,11 @@ Anoto as coisas do jeito que entendo. Caso tenha algo errado, por favor, abra um
 ## Descobertas
 "Descobertas" que fiz durante meus estudos/pesquisas, incluindo funções, curiosidades etc.
 
-* ``number_format()`` \
+* ``number_format(float $number, int $decimals)`` \
     Serve para formatar números de diversas formas, como por exemplo, diminuir a quantidade de casas decimais. Fonte: [Documentação do PHP](https://www.php.net/manual/pt_BR/function.number-format.php)
+
+* ``rand(int $min, int $max)``\
+    Serve para gerar números aleatórios de acordo com o intervalo indicado. Sem nenhum atributo, essa função gera um número de 0 a ``getrandmax()``(que serve para saber o valor máximo). Fonte: [Documentação do PHP](https://www.php.net/manual/pt_BR/function.rand.php)
 
 ## O que é preciso para desenvolver em PHP?
 Para desenvolver em php é preciso de um servidor onde tenha:
