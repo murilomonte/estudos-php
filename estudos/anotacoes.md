@@ -7,6 +7,7 @@ Anoto as coisas do jeito que entendo. Caso tenha algo errado, por favor, abra um
 
 ## Sumário
 
+* [Descobertas](#descobertas)
 * [O que é preciso para desenvolver em PHP?](#o-que-é-preciso-para-desenvolver-em-php)
 * [Tempo com php](#tempo-com-php)
 * [Variáveis e constantes](#variáveis-e-constantes)
@@ -25,6 +26,12 @@ Anoto as coisas do jeito que entendo. Caso tenha algo errado, por favor, abra um
     * [Observações](#observac3a7c3b5es-4)
 
 **(ToDo)**
+
+## Descobertas
+"Descobertas" que fiz durante meus estudos/pesquisas, incluindo funções, curiosidades etc.
+
+* ``number_format()`` \
+    Serve para formatar números de diversas formas, como por exemplo, diminuir a quantidade de casas decimais. Fonte: [Documentação do PHP](https://www.php.net/manual/pt_BR/function.number-format.php)
 
 ## O que é preciso para desenvolver em PHP?
 Para desenvolver em php é preciso de um servidor onde tenha:
