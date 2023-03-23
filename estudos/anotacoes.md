@@ -5,6 +5,9 @@ Essas são minhas anotações sobre o meu estudo sobre PHP que está ocorrendo p
 ## Disclaimer
 Anoto as coisas do jeito que entendo. Caso tenha algo errado, por favor, abra uma issue informando o problema. Irei agradecer muito :)
 
+## Sumário
+**(ToDo)**
+
 ## O que é preciso para desenvolver em PHP?
 Para desenvolver em php é preciso de um servidor onde tenha:
 * Apache (ou outro) \
@@ -188,3 +191,39 @@ Para resolver, podemos utilizar os operadores de **coalescencia nula**, adiciona
 // caso não seja transmitido nenhum dado através de 'name', será usado a string "sem nome no lugar".
 $nome = $_REQUEST["nome"] ?? "sem nome";
 ```
+## Funções aritméticas
+No PHP temos várias funções aritméticas. Temos como exemplo:
+* **abs()** \
+    que retorna o valor absoluto de um número.
+* **base_convert()** \
+    Converte a base dos números. Pode converter da base decimal para hexa ou octa, por exemplo.
+* **ceil()**, **floor()**, **round()** \
+    São funções de arredondamento. Elas podem arredondar para cima, para baixo e aritmeticamente, respectivamente.
+* **hypot()** \
+    Calcula a hipotenusa.
+* **intdiv()** \
+    Faz a divisão inteira.
+* **min()**, **max()** \
+    Mostra o valor mínimo e máximo de uma sequência.
+* **pi()** \
+    Mostra o valor de pi.
+* **pow()** \
+    Realiza o cálculo de uma potência. (*checar observações)
+* **sin()**, **cos()**, **tan()** \
+    Servem para calcular o seno, corseno e tangente, respectivamente.
+* **sqrt()**
+    Realiza a raiz quadrada de um número. (*checar observações)
+
+
+### Observações
+* Até um tempo atrás não havia uma expressão para potência no php, então era usado a função ``pow()``, que agora pode ser substituído pelos dois asteríscos (``**``). **Qual a diferença então?** Usando a função, perde-se a ordem de precedência.
+
+* Alternativamente a função ``sqrt()`` é possível realizar uma raiz quadrada utilizando a expressão de potência. Ex:
+    ```php
+    // raiz quadrada
+    27 ** (1/2) //--> 9
+
+    // raiz cúbica 
+    27 ** (1/3) //--> 3
+    ```
+    **Qual a diferença?** Utilizando esse método alternativo é possível realizar o cálculo raiz cúbica.
