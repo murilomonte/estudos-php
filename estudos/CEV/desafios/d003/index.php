@@ -12,12 +12,12 @@
         <h1>Conversor de moeda</h1>
         <?php 
             $quantia = $_REQUEST["quantia"];
-            $cotação = 5.28;
+            $cotacao = 5.28;
            
-            $conversão = number_format($quantia * (1 / $cotação), 2);
+            $conversao = number_format($quantia * (1 / $cotacao), 2);
 
-            echo "<p>Seus RS$$quantia equivalem a <strong>US$$conversão</strong></p>";
-            echo "<p>*<strong>Cotação fixa de R$$cotação informada diretamente no código.</p>"
+            echo "<p>Seus RS$$quantia equivalem a <strong>US$$conversao</strong></p>";
+            echo "<p>*<strong>Cotação fixa de R$$cotacao informada diretamente no código.</p>"
         ?>
     </section>
 </body>
