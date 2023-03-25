@@ -31,10 +31,29 @@ Anoto as coisas do jeito que entendo. Caso tenha algo errado, por favor, abra um
 "Descobertas" que fiz durante meus estudos/pesquisas, incluindo funções, curiosidades etc.
 
 * ``number_format(float $number, int $decimals)`` \
-    Serve para formatar números de diversas formas, como por exemplo, diminuir a quantidade de casas decimais. Fonte: [Documentação do PHP](https://www.php.net/manual/pt_BR/function.number-format.php)
+    Serve para formatar números de diversas formas, como por exemplo, diminuir a quantidade de casas decimais. \
+    Fonte: [Documentação do PHP](https://www.php.net/manual/pt_BR/function.number-format.php)
 
 * ``rand(int $min, int $max)``\
-    Serve para gerar números aleatórios de acordo com o intervalo indicado. Sem nenhum atributo, essa função gera um número de 0 a ``getrandmax()``(que serve para saber o valor máximo). Fonte: [Documentação do PHP](https://www.php.net/manual/pt_BR/function.rand.php)
+    Serve para gerar números aleatórios de acordo com o intervalo indicado. Sem nenhum atributo, essa função gera um número de 0 a ``getrandmax()``(que serve para saber o valor máximo). \
+    Fonte: [Documentação do PHP](https://www.php.net/manual/pt_BR/function.rand.php)
+    
+* ``str_replace()`` \
+    Serve para mudar todas ocorrências indicadas em uma string com outra string. Ex:
+    ```php
+    $string = "Hello, world!";
+    str_repla("World", "Lune!"); 
+    echo $string; //--> Hello, Lune!
+    ```
+    Fonte: [Documentação do PHP](https://www.php.net/manual/pt_BR/function.str-replace.php)
+
+* ``file_get_contents(string $filename, bool $user_include_path, ...)`` \
+    Serve para ler um arquivo e colocá-lo dentro de uma string. (*Revisar) Sendo muito útil para usar com apis simples, onde devolvem um json. \
+    Fonte [Documentação do PHP](https://www.php.net/manual/en/function.file-get-contents.php)
+
+* ``json_decode(string $json, ?bool $associative = null)`` \
+    Serve para decodificar um json em um objeto do php. Observação, quando ``$associative`` receber ``true`` os json serão devolvidos como arrays, caso seja ``false``, serão devolvidos como objetos. \
+    Fonte: [Documentação do PHP](https://www.php.net/manual/pt_BR/function.json-decode.php)
 
 ## O que é preciso para desenvolver em PHP?
 Para desenvolver em php é preciso de um servidor onde tenha:
@@ -136,9 +155,9 @@ var_dump($num); //--> int(950)
 
 ## Manipulação de strings
 
-As strings podem ser dividida em 4 formatos. Sendo eles:
-
 ### Tipos de strings
+
+As strings podem ser dividida em 4 formatos. Sendo eles:
 
 * **Double quoted** \
     É um tipo de string que utiliza aspas duplas. \
@@ -222,7 +241,7 @@ Para resolver, podemos utilizar os operadores de **coalescencia nula**, adiciona
 $nome = $_REQUEST["nome"] ?? "sem nome";
 ```
 ## Funções aritméticas
-No PHP temos várias funções aritméticas. Temos como exemplo:
+No PHP há várias funções aritméticas. Temos como exemplo:
 
 * **abs()** \
     que retorna o valor absoluto de um número.
