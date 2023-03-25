@@ -24,6 +24,9 @@ Anoto as coisas do jeito que entendo. Caso tenha algo errado, por favor, abra um
     * [Observações](#observac3a7c3b5es-3)
 * [Funções aritméticas](#funções-aritméticas)
     * [Observações](#observac3a7c3b5es-4)
+* [Números aleatórios com PHP](#números-aleatórios-com-php)
+    * [Observações](#observac3a7c3b5es-5)
+* [Moedas com PHP](#moedas-com-php)
 
 **(ToDo)**
 
@@ -36,6 +39,7 @@ Anoto as coisas do jeito que entendo. Caso tenha algo errado, por favor, abra um
 
 * ``rand(int $min, int $max)``\
     Serve para gerar números aleatórios de acordo com o intervalo indicado. Sem nenhum atributo, essa função gera um número de 0 a ``getrandmax()``(que serve para saber o valor máximo). \
+    Veja [números aleatórios com php](#números-aleatórios-com-php) para mais informações. \
     Fonte: [Documentação do PHP](https://www.php.net/manual/pt_BR/function.rand.php)
     
 * ``str_replace()`` \
@@ -277,3 +281,36 @@ No PHP há várias funções aritméticas. Temos como exemplo:
     27 ** (1/3) //--> 3
     ```
     **Qual a diferença?** Utilizando esse método alternativo é possível realizar o cálculo raiz cúbica.
+
+## Números aleatórios com PHP
+No php há diversas formas de gerar números aleatórios. Delas, temos as seguintes funções com suas respectivas características:
+
+* ``rand(int $min, int $max)``\
+    Serve para gerar números aleatórios de acordo com o intervalo indicado. Sem nenhum atributo, essa função gera um número de 0 a ``getrandmax()`` (que serve para saber o valor máximo). A partir da versão 7.1 a função se tornou um alias para a função ``mt_rand()`` (*Ver observações)\
+    Fonte: [Documentação do PHP](https://www.php.net/manual/pt_BR/function.rand.php).
+ * ``mt_rand(int $min, int $max)`` \
+    É uma versão atualizada da função ``rand()```antes das versões 7.1 do PHP. Utilizando um algorítmo diferente da sua antecessora, é capaz de gerar números 4 vezes mais rápido. (*Ver observações) \
+    Fonte: [Documentação do PHP](https://www.php.net/manual/pt_BR/function.mt-rand.php).
+* ``int_rand()`` \
+    Gerar números criptograficamente seguros. Porém, em uma velocidade muito baixa.
+
+### Observações
+Em versões anteriores a 7.1 do php, a função ``rand()`` utilizava o algorítmo **Linear Congrential Generator**, de meados de 1951. Já nas versões atuais, utiliza o algorítmo **Mersenne Twister**, de 1997, sendo mais rápido e mais seguro. Alternativamente, pode ser utilizado a função ``mt_rand()``, que usa por padrão o novo algorítmo.
+
+## Moedas com PHP
+(*Revisar depois)
+É possível mostrar corretamente moedas de acordo com a língua do usuário através utilizando a classe [``NumberFormatter``](https://www.php.net/manual/en/class.numberformatter.php), utilizando as funções ``numfmt_create()`` e ``numfmt_format_currency()``. Ex:
+```php
+$valor = 1000;
+
+$padrão = numfmt_create("pt_BR", NumberFormatter::CURRENCY);
+
+echo "O valor no Brasil é " . numfmt_format_currency($padrão, $valor, "BRL" ); //--> R$ 1.000,00
+
+echo "O valor nos EUA é " . numfmt_format_currency($padrão, $valor, "USD") //--> US$1.000,00
+```
+
+(toDo)
+
+### Observações
+Essa função pode não funcionar em um servidor local utilizando o xampp, por exemplo. Sendo necessário fazer alguns ajustes no servidor. (toDo)
