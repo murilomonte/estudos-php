@@ -12,6 +12,8 @@
     <h1>Conversor de moeda</h1>
         <?php
             date_default_timezone_set("America/Sao_Paulo");
+            $padrao = numfmt_create("pt_BR", NumberFormatter::CURRENCY);
+            
             $data = date("m-d-Y");
             $data_conv = date("d/m/Y");
 
@@ -29,15 +31,20 @@
             }
 
             $quantia = $_REQUEST["quantia"];
-            $quantia_conv = number_format($quantia, 2, ',', '.');
+
+            //$quantia_conv = number_format($quantia, 2, ',', '.');
+            $quantia_conv = numfmt_format_currency($padrao, $quantia, "BRL", );
 
             $cotacao = bcb_api($data);
-            $cotacao_conv = number_format($cotacao, 4, ',', '.');
-            
-            $conversao = number_format($quantia / $cotacao, 2,  '.', ',');
 
-            echo "<p>Seus RS$$quantia_conv equivalem a <strong>US$$conversao</strong></p>";
-            echo "<p>*<strong>Cotação de R$$cotacao_conv informada no dia $data_conv pelo Banco Central do Brasil.</p>"
+            //$cotacao_conv = number_format($cotacao, 4, ',', '.');
+            $cotacao_conv = numfmt_format_currency($padrao, $cotacao, "BRL");
+            
+            //$conversao = number_format($quantia / $cotacao, 2,  '.', ',');
+            $conversao = numfmt_format_currency($padrao, $quantia / $cotacao, "USD" );
+            
+            echo "<p>Seus $quantia_conv equivalem a <strong>$conversao</strong></p>";
+            echo "<p>*<strong>Cotação de $cotacao_conv informada no dia $data_conv pelo Banco Central do Brasil.</p>"
         ?>
         <button onClick="window.history.go(-1); return false;">Voltar</button>
     </section>
