@@ -14,12 +14,13 @@
             date_default_timezone_set("America/Sao_Paulo");
             $padrao = numfmt_create("pt_BR", NumberFormatter::CURRENCY);
             
-            $data = date("m-d-Y");
+            $data_inicio = date("m-d-Y", strtotime("-7 days"));
+            $data_atual = date("m-d-Y");
             $data_conv = date("d/m/Y");
 
-            function bcb_api($data_atual) {
-                $api = "https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoDolarDia(dataCotacao=@dataCotacao)?@dataCotacao='$data_atual'&".'$top=100&$format=json&$select=cotacaoCompra,cotacaoVenda,dataHoraCotacao';
-                
+            function bcb_api($data_atual, $data_inicio) {
+                $api = "https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoDolarPeriodo(dataInicial=@dataInicial,dataFinalCotacao=@dataFinalCotacao)?@dataInicial='$data_inicio'&@dataFinalCotacao='$data_atual'&" . '$top=1&$orderby=dataHoraCotacao%20desc&$format=json&$select=cotacaoVenda,dataHoraCotacao';
+ 
                 // recebe o json fornecido pela api
                 $json_data = file_get_contents($api);
     
@@ -27,7 +28,7 @@
                 $response_data = json_decode($json_data, true); 
     
                 // devolve o resultado
-                return $response_data["value"][0]["cotacaoCompra"];   
+                return $response_data["value"][0]["cotacaoVenda"];   
             }
 
             $quantia = $_REQUEST["quantia"];
@@ -35,7 +36,7 @@
             //$quantia_conv = number_format($quantia, 2, ',', '.');
             $quantia_conv = numfmt_format_currency($padrao, $quantia, "BRL", );
 
-            $cotacao = bcb_api($data);
+            $cotacao = bcb_api($data_atual, $data_inicio);
 
             //$cotacao_conv = number_format($cotacao, 4, ',', '.');
             $cotacao_conv = numfmt_format_currency($padrao, $cotacao, "BRL");
