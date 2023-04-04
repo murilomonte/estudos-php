@@ -11,7 +11,7 @@
     <section>
         <h1>Analisador de número real</h1>
         <?php 
-            $numero = $_REQUEST["numero"];
+            $numero = $_REQUEST["numero"] ?? 0;
             $inteiro = (int) $numero;
             $fracionaria = number_format($numero - $inteiro, 3,',');
             echo "Analisando o número <strong>$numero</strong> informado pelo usuário:";
