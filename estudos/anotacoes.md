@@ -8,6 +8,8 @@ Anoto as coisas do jeito que entendo. Caso tenha algo errado, por favor, abra um
 ## Sumário
 
 * [Descobertas](#descobertas)
+    * [Comandos](#comandos)
+    * [Definições](#definições)
 * [O que é preciso para desenvolver em PHP?](#o-que-é-preciso-para-desenvolver-em-php)
 * [Tempo com php](#tempo-com-php)
 * [Variáveis e constantes](#variáveis-e-constantes)
@@ -32,6 +34,8 @@ Anoto as coisas do jeito que entendo. Caso tenha algo errado, por favor, abra um
 
 ## Descobertas
 "Descobertas" que fiz durante meus estudos/pesquisas, incluindo funções, curiosidades etc.
+
+### Comandos
 
 * ``number_format(float $number, int $decimals)`` \
     Serve para formatar números de diversas formas, como por exemplo, diminuir a quantidade de casas decimais. \
@@ -58,6 +62,11 @@ Anoto as coisas do jeito que entendo. Caso tenha algo errado, por favor, abra um
 * ``json_decode(string $json, ?bool $associative = null)`` \
     Serve para decodificar um json em um objeto do php. Observação, quando ``$associative`` receber ``true`` os json serão devolvidos como arrays, caso seja ``false``, serão devolvidos como objetos. \
     Fonte: [Documentação do PHP](https://www.php.net/manual/pt_BR/function.json-decode.php)
+
+### Definições
+* ``Query String`` \
+    É uma solicitação. É o nome que se dá à URL quando há parâmetros.
+
 
 ## O que é preciso para desenvolver em PHP?
 Para desenvolver em php é preciso de um servidor onde tenha:
@@ -314,3 +323,20 @@ echo "O valor nos EUA é " . numfmt_format_currency($padrão, $valor, "USD") //-
 
 ### Observações
 Essa função pode não funcionar em um servidor local utilizando o xampp, por exemplo. Sendo necessário fazer alguns ajustes no servidor. (toDo)
+
+## Superglobais
+Superglobais são variáveis pré-definidas que estão disponíveis em todo o escopo do script. Temos como exemplo:
+
+* ``$_GET``
+* ``$_POST``
+* ``$_REQUEST``
+* ``$_COOKIES``
+* ``$_FILES`` \
+    Serve para pegar os dados de um arquivo enviado pelo usuário.
+* ``$_SESSION`` \
+    Utiliza variáveis de sessão (*Revisar)
+* ``$_ENV``
+    Utiliza variáveis do servidor (*Revisar)
+* ``$_SERVER``
+* ``$GLOBALS``
+    Mostra o dados de todas as outras globais.
