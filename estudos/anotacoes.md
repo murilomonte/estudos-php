@@ -55,17 +55,51 @@ Anoto as coisas do jeito que entendo. Caso tenha algo errado, por favor, abra um
     ```
     Fonte: [Documentação do PHP](https://www.php.net/manual/pt_BR/function.str-replace.php)
 
-* ``file_get_contents(string $filename, bool $user_include_path, ...)`` \
+* ``file_get_contents($string $filename, bool $user_include_path, ...)`` \
     Serve para ler um arquivo e colocá-lo dentro de uma string. (*Revisar) Sendo muito útil para usar com apis simples, onde devolvem um json. \
     Fonte [Documentação do PHP](https://www.php.net/manual/en/function.file-get-contents.php)
 
-* ``json_decode(string $json, ?bool $associative = null)`` \
+* ``json_decode($string $json, ?bool $associative = null)`` \
     Serve para decodificar um json em um objeto do php. Observação, quando ``$associative`` receber ``true`` os json serão devolvidos como arrays, caso seja ``false``, serão devolvidos como objetos. \
     Fonte: [Documentação do PHP](https://www.php.net/manual/pt_BR/function.json-decode.php)
 
+* ``strlen($string)`` \
+    Retorna o número de caracteres da string. \
+
+* ``substr($string, $int, $int)`` \
+    Serve para mostrar os elementos da strin entre o intervalo indicado. Ex: \
+    ```php
+    substr("Olá!", 0, 1) //--> Ol
+    ```
+* ``strtoupper($string)`` \
+    Transforma todas as letras da sring em maiúsculas.
+
+* ``strtolower($string)`` \
+    Tranforma todas as letras da string em minúsculas
+
+* ``str_replace($search, $replace, $subject)`` \
+    Substitui uma letra ou string por outra. Ex:
+    ```php
+    str_replace("Mundo", "World", "Olá Mundo!") //--> Olá World!
+    ```
+
+* ``strpos($string, $search)`` \
+    Devolve a posição da busca na string indicada.
+
+* ``str_contains($string, $search)`` \
+    Retorna ``true`` caso haja resultado para a busca dentro da string, caso contrário, retorna ``false``.
+    
+
+* `str_starts_with($string, $search)` \
+    Rertona ``true`` caso a string indicada comece com a busca indicada, caso contrário, retorna ``false``.
+
+* ``str_ends_with($string, $search)`` \
+    Retorna ``true`` caso a string indicada termine com a busca indicada, caso contrário, retorna ``false``.
+
+
 ### Definições
 * ``Query String`` \
-    É uma solicitação. É o nome que se dá à URL quando há parâmetros.
+    É uma solicitação. É o nome que se dá à URL quando há parâmetros. 
 
 
 ## O que é preciso para desenvolver em PHP?
@@ -340,3 +374,89 @@ Superglobais são variáveis pré-definidas que estão disponíveis em todo o es
 * ``$_SERVER``
 * ``$GLOBALS``
     Mostra o dados de todas as outras globais.
+
+
+## Arrays
+A sintáxe de arrays funcionam de forma parecida ao javascript (com chaves []). \
+Para atribuir um valor a um indice não sequencial, podemos utilizar a seguinte sintáxe:
+```php
+$dados = [ 
+    10 => 1000,
+    20 => 2000,
+    30 => 3000
+];
+
+echo $dados[10]; //--> 1000
+```
+
+Podemos adicionar um valor a última posição de um array utilizando a seguinte sintáxe, pois sem um indice, o php considerará o último (30) + 1 (= 31):
+```php
+$dados[] = 4000; //--> $dados[31]
+// assim o array $dados receberá o valor 4000 na última posição
+```
+Alternativamente é possível adicionar um valor a última posição de um array com uma função:
+```php
+array_push($dados, 5000);
+```
+
+### Arrays associativos
+Ao contrário dos arrays "comums", os arrays associativos possuem indices como strings. Por exemplo:
+```php
+$dados = [
+    'nome' => 'Ana',
+    'email' => 'ana@email.com',
+    'nacionalidade' => 'Brasil',
+    'telefone' => '5511912345678'
+]
+```
+E como faz para mostrar um valor? Para isso utilizamos a seguinte sintáxe:
+```php
+echo $dados['nome'] //--> Ana
+echo $dados['nacionalidade'] //--> Brasil
+```
+### Arrays mistos (nem o criador sabe que existe)
+É possível criar um array que combina indices associativos com indices numéricos. Ex:
+```php
+$dados = [
+    0 => 10,
+    'nome' => 'Ana',
+    'email' => 'ana@email.com',
+    10 => 1000,
+    11 => 'string legal'
+]
+```
+### Arrays multidimensionais
+São arrays onde seus valores podem ser outros arrays. Por exemplo:
+```php
+$dados = [
+    [
+        10, //--> 0
+        20, //--> 1
+        30, //--> 2
+        40  //--> 3
+    ], //--> 0
+    [100, 200, 300, 400], //--> 1
+    [1000, 2000, 3000, 4000] //--> 2
+]
+```
+Para apresentar este tipo de array, utilizamos a seguinte sintáxe. Ex:
+```php
+echo $dados[1][2]; //--> 300
+```
+Onde o primeiro colchete indica o array principal e o segundo colchete indica o array dentro do indice indicado
+
+#### Arrays multidimensionais associativos
+Também é possível utilizar arrays associativos como multidimensionais:
+```php
+$cidades = [
+    'Portugal' => ['Lisboa', 'Porto', 'Coimbra'],
+    'Brasil' => ['Teresina', 'Fortaleza', 'Recife']
+]
+```
+E para apresentá-los, utiliza-se a seguinte sintáxe:
+```php
+echo $cidades['Brasil'][0]; //--> Teresina
+```
+
+#### Observação:
+Os arrays multidimensionais podem ter mais de duas dimensões.
