@@ -7,6 +7,7 @@ Anoto as coisas do jeito que entendo. Caso tenha algo errado, por favor, abra um
 
 ## Sumário
 
+* [Vocabulário]()
 * [Descobertas](#descobertas)
     * [Comandos](#comandos)
     * [Definições](#definições)
@@ -29,8 +30,27 @@ Anoto as coisas do jeito que entendo. Caso tenha algo errado, por favor, abra um
 * [Números aleatórios com PHP](#números-aleatórios-com-php)
     * [Observações](#observac3a7c3b5es-5)
 * [Moedas com PHP](#moedas-com-php)
+    * [Observações](#observac3a7c3b5es-6)
+* [Superglobais](#superglobais)
+* [Arrays](#arrays)
+    * [Arrays asociativos](#arrays-associativos)
+    * [Arrays mistos](#arrays-mistos)
+    * [Arrays multidimensionais](#arrays-multidimensionais)
+        * [Arrays multidimensionais associativos](#arrays-multidimensionais-associativos)
+        * [Observações](#observac3a7c3b5es-7)
+    * [Funções](#funções)
+* [Condicionais (if/else e switch)](#condicionais-ifelse-e-switch)
+    * [Sintáxe alternativa](#sintáxe-alternativa)
+        * [Por que usar essa alternativa?](#por-que-usar-essa-alternativa)
+* [Operador ternário](#operador-ternário)
+* [Condicional match](#condicional-match)
+    * [Observação](#observac3a7c3b5es-8)
 
 **(ToDo)**
+
+## Vocabulário
+* **Nem o criador sabe que existe** \
+    Quando algo é desconhecido e/ou não é muito recomendado usar
 
 ## Descobertas
 "Descobertas" que fiz durante meus estudos/pesquisas, incluindo funções, curiosidades etc.
@@ -414,7 +434,8 @@ E como faz para mostrar um valor? Para isso utilizamos a seguinte sintáxe:
 echo $dados['nome'] //--> Ana
 echo $dados['nacionalidade'] //--> Brasil
 ```
-### Arrays mistos (nem o criador sabe que existe)
+### Arrays mistos
+**(nem o criador sabe que existe)** \
 É possível criar um array que combina indices associativos com indices numéricos. Ex:
 ```php
 $dados = [
@@ -457,6 +478,69 @@ E para apresentá-los, utiliza-se a seguinte sintáxe:
 ```php
 echo $cidades['Brasil'][0]; //--> Teresina
 ```
-
-#### Observação:
+#### Observações:
 Os arrays multidimensionais podem ter mais de duas dimensões.
+
+### Funções
+todo
+
+## Condicionais (if/else e switch)
+### sintáxe alternativa
+As instruções condicionais funcionam de forma parecida ao javascript, porém, há uma sintáxe alternativa para ambos, muito útil em alguns casos. Ex:
+```php
+$valor = 10;
+if ($valor == 10): 
+    // ...
+elseif:
+    // ...
+else:
+    // ...
+endif;
+```
+Funciona de maneira parecida às tags html, com uma abertura e fechamento. \
+Há também sintáxe alternativa para o switch:
+```php
+switch ($variable):
+    case: 'value':
+        // ...
+        break
+    default:
+        ///
+        break
+endswitch;
+```
+#### **Por que usar essa alternativa?** 
+Dessa forma, é possível utilizar html puro dentro de condicionais em php. Ex:
+```php
+<?php if (true): ?>
+    <div>Executar código html</div>
+<?php else: ?>
+    <div>Executar código html</div>
+<?php endif; ?>
+```
+## Operador ternário
+O operador ternário funciona de maneira parecida ao javascript:
+```php
+teste ? true : false 
+```
+Também podend ser muito útil quando utilizado com html. \
+Ex: Uma cor definida pelo php
+```html
+<h2 style="color: <?= $opção == 1 ? 'red' : 'blue' ?>">Esse título foi colorido através do php</h2>
+```
+Se o valor da variável ``$opção`` for igual a ``1`` o título receberá a cor vermelha, caso contrário, receberá a cor azul.
+
+## Condicional match
+No php 8 foi adicionado uma nova instrução condicional funcionando de maneira parecida ao switch, porém, de maneira menor. Ex:
+```php
+echo match($numero) {
+    5 => 'parou no 5',
+    10 => 'parou no 10',
+    15 => 'parou no 15',
+    default => 'É um número diferente de 5, 10 ou 15'
+}
+```
+**A desvantagem** é que só é possível utilizar uma expressão por cada condição.
+
+## Observações
+Ao contrário do switch, o match compara o valor e tipo da variável antes de atribuir a condição.
