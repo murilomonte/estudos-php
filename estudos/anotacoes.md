@@ -395,6 +395,37 @@ Superglobais são variáveis pré-definidas que estão disponíveis em todo o es
 * ``$GLOBALS``
     Mostra o dados de todas as outras globais.
 
+## Formulários retroalimentados
+Em um formulário retro alimentado, um formulário dentro de um arquivo php envia dados para ele mesmo, ao invés de outro arquivo, sendo muito útil em diversos casos. 
+
+Para criarmos, iremos usar a váriavel  ``PHP_SELF`` encontrada dentro da superglobal ``$_SERVER``. Nela há o caminho relativo do arquivo que está sendo executado no momento.
+
+Primeiramente, é preciso criar um formulário, porém, utilizando a variável ``PHP_SELF`` no parâmetro ``action=""`` utilizando uma php short tag (preferencialmente). Ex:
+```php
+<form action="<?=$_SERVER['PHP_SELF']?>" method="get">
+    <label for="v1">Valor 1</label>
+    <input type="number" name="v1" id="v1" value="<?=$valor1?>">
+
+    <label for="v2">Valor 2</label>
+    <input type="number" name="v2" id="v2" value="<?=$valor2?>">
+
+    <input type="submit" value="Somar">
+</form>
+```
+
+(Sendo os atributos ``value="<?=$valorX?>"`` para continuar mostrando o valor depois de enviar o formulário)
+
+
+Dessa forma, o arquivo será indicado como "alvo" para o formulário. 
+
+Executando, o arquivo retorna os valores por meio da url ou cabeçalhos (a depender do ``method`` utilizado), assim, podendo ser consumidos através de ``$_REQUEST``, ``$_GET``, ou ``$_POST``:
+```php
+<?php 
+    $valor1 = $_GET['v1'] ?? 0;
+    $valor2 = $_GET['v2'] ?? 0;
+?>
+```
+E podendo ser utilizado posterior mente no código.
 
 ## Arrays
 A sintáxe de arrays funcionam de forma parecida ao javascript (com chaves []). \
