@@ -27,19 +27,25 @@
 
     <section>
         <h2>Estrutura de uma divisão</h2>
-        <?php 
-            $quociente = intdiv($dividendo, $divisor);
-            $resto = $dividendo % $divisor;
-            echo "<table>";
-                echo "<tr>";
-                    echo "<td>$dividendo</td>";
-                    echo "<td>$divisor</td>";
-                echo "</tr>";
-                    echo "<td>$resto</td>";
-                    echo "<td>$quociente</td>";
-            echo "</table>";
+        <?php  
+            if ($dividendo == 0 && $divisor == 0 ) {
+                echo "<p>Insira um dividendo e um divisor</p>";
+            } else {
+                $quociente = intdiv($dividendo, $divisor);
+                $resto = $dividendo % $divisor;
+                echo "<table>";
+                    echo "<tr>";
+                        echo "<td>$dividendo</td>";
+                        echo "<td>$divisor</td>";
+                    echo "</tr>";
+                    echo "<tr>";
+                        echo "<td>$resto</td>";
+                        echo "<td>$quociente</td>";
+                    echo "</tr>";
+                echo "</table>";
+                echo "<p>css não é o meu forte :(</p>";
+            }     
         ?>
-        <p>css não é o meu forte :(</p>
     </section>
 </body>
 </html>
