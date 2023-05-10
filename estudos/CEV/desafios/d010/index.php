@@ -10,8 +10,8 @@
 <body>
     <?php 
         $nascimento = $_GET['nascimento'] ?? 0;
-        $anoSel = $_GET['anoSel'] ?? 0;
         $anoAtual = date("Y");
+        $anoSel = $_GET['anoSel'] ?? $anoAtual;
         date_default_timezone_set("America/Sao_Paulo");
     ?>
     <main>
@@ -29,8 +29,8 @@
     <section>
         <h2>Resultado</h2>
         <?php 
-            if ($nascimento == 0 || $anoSel == 0) {
-                echo "<p>Insira uma data.</p>";
+            if ( $nascimento > $anoSel) {
+                echo "<p>Insira uma data válida.</p>";
             } else {
                 $resultado = $anoSel - $nascimento;
                 echo "<p>Quem nasceu em $nascimento vai ter <strong>$resultado anos</strong> em $anoSel</p>";
