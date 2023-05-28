@@ -116,7 +116,6 @@ Anoto as coisas do jeito que entendo. Caso tenha algo errado, por favor, abra um
 * ``str_ends_with($string, $search)`` \
     Retorna ``true`` caso a string indicada termine com a busca indicada, caso contrário, retorna ``false``.
 
-
 ### Definições
 * ``Query String`` \
     É uma solicitação. É o nome que se dá à URL quando há parâmetros. 
@@ -512,6 +511,30 @@ echo $cidades['Brasil'][0]; //--> Teresina
 #### Observações:
 Os arrays multidimensionais podem ter mais de duas dimensões.
 
+### Manipulação de arrays
+Funções e outros métodos utilizados para manipular arrays:
+
+* ``foreach($array as $variable)`` \
+    Podemos utilizar o comando para mostrar todos os elementos de um array:
+    ```php
+    // pode ser lido como: "Para cada elemento do $array, atribua à $variable...
+    foreach($array as $variable) {
+        // ...e execute o loop mostrando a $variable até o último elemento" 
+        echo $variable;
+    }
+    ```
+    * Para arrays associativos \
+    Utiliza-se uma sintáxe ligeiramente diferente:
+    ```php
+        // Poder ser lido como: "Para cada elemento do $array, atribua à $key e seu respectivo valor à $value"
+        foreach($array as $key => $value) {
+            echo "Para $key é $value ";
+        }
+    ```
+
+* ``count($array)`` \
+    Conta quantos elementos há dentro de um array
+
 ### Funções
 todo
 
@@ -573,5 +596,5 @@ echo match($numero) {
 ```
 **A desvantagem** é que só é possível utilizar uma expressão por cada condição.
 
-## Observações
+### Observações
 Ao contrário do switch, o match compara o valor e tipo da variável antes de atribuir a condição.
